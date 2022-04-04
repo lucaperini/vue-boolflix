@@ -1,25 +1,48 @@
 <template>
-    
-        <nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand">Navbar</a>
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-
-    
+    <nav class="navbar navbar-light bg-danger">
+        <div class="container-fluid">
+            <a href="" class="navbar-brand text-white fs-2">Boolflix</a>
+                <form class="d-flex">
+                <input v-model="searchInput"
+                class="form-control me-2" 
+                type="search" 
+                placeholder="Inserisci titolo..." 
+                @keyup.enter="startNewSearch"
+                >
+                <button 
+                @click="startNewSearch" 
+                class="btn btn-outline-light" 
+                type="submit">
+                Cerca
+                </button>
+            </form>
+        </div>
+    </nav>
 </template>
 
 <script>
 export default {
-    name: "HeaderIndex",
-
+    name: 'IndexHeader',
+    
+    data: function(){
+        return {
+            searchInput : '',
+        }
+    },
+    methods:{
+        startNewSearch(){
+            if (this.searchInput === ""){
+                console.warn('non hai inserito niente.')
+                
+            } else {
+            this.$emit('searchTitle', this.searchInput);
+            }
+        }
+    }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>
+
