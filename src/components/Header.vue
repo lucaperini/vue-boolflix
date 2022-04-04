@@ -2,7 +2,7 @@
     <nav class="navbar navbar-light bg-danger">
         <div class="container-fluid">
             <a href="" class="navbar-brand text-white fs-2">Boolflix</a>
-                <form class="d-flex">
+            <div class="d-flex">
                 <input v-model="searchInput"
                 class="form-control me-2" 
                 type="search" 
@@ -15,7 +15,7 @@
                 type="submit">
                 Cerca
                 </button>
-            </form>
+            </div>
         </div>
     </nav>
 </template>

@@ -34,23 +34,28 @@ export default {
   },
   methods: {
     getApiList(){
-          axios.get('https://api.themoviedb.org/3/search/movie?api_key=82b3378dac0b800eb4daa7c5da96f82b&query={{this.searchText}}')
+          axios.get('https://api.themoviedb.org/3/search/movie?api_key=82b3378dac0b800eb4daa7c5da96f82b&query=amarcord')
           
           .then((result) => {
               this.searchMovies = result.data.results;
             })
           .catch((error) => {
               console.log(error);
+              console.log(error.response.data)
+              console.log(error.response.headers)
+              console.log(error.response.status)
+
+              console.warn(this.searchText);
           })
           
-          axios.get('https://api.themoviedb.org/3/search/tv?api_key=82b3378dac0b800eb4daa7c5da96f82b&query={{this.searchText}}')
+          // axios.get('https://api.themoviedb.org/3/search/tv?api_key=82b3378dac0b800eb4daa7c5da96f82b&query='+ this.searchText)
           
-          .then((result) => {
-              this.searchSeries = result.data.results;
-            })
-          .catch((error) => {
-              console.log(error);
-          })
+          // .then((result) => {
+          //     this.searchSeries = result.data.results;
+          //   })
+          // .catch((error) => {
+          //     console.log(error);
+          // })
       },
 
       startSearch(searchInput){
