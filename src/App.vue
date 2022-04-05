@@ -2,6 +2,7 @@
   <div id="app">
     <Header 
       @searchTitle="startSearch"
+      @resetInput=" searchMovies = [], searchSeries = [] "
     />
     <Main 
       :searchMoviesList="searchMovies"

@@ -1,7 +1,7 @@
 <template>
-    <nav class="navbar navbar-light bg-danger">
+    <nav class="navbar">
         <div class="container-fluid">
-            <a href="" class="navbar-brand text-white fs-2">Boolflix</a>
+            <a href="" class="navbar-brand text-danger fs-2">Boolflix</a>
             <div class="d-flex">
                 <input v-model="searchInput"
                 class="form-control me-2" 
@@ -14,6 +14,12 @@
                 class="btn btn-outline-light" 
                 type="submit">
                 Cerca
+                </button>
+                <button 
+                @click="$emit('resetInput','')" 
+                class="btn btn-outline-light" 
+                type="submit">
+                Reset
                 </button>
             </div>
         </div>
@@ -43,6 +49,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.navbar{
+    background-color: rgb(27, 27, 27);
+}
 
 </style>
 
