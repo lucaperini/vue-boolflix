@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import '@fortawesome/fontawesome-free/js/all.js';
 
 import Header from './components/Header.vue'
 import Main from './components/Main.vue'

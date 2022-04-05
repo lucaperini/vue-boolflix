@@ -1,25 +1,29 @@
 <template>
-    <div>
-        <!-- Poster Film -->
-        <div v-if="result.title">
+ <div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      
+      <div v-if="result.title">
           <img v-if="result.poster_path !== null" 
             
             :src="`https://image.tmdb.org/t/p/w342${result.poster_path}`" 
             :alt="`Poster ${result.title}`"
           >
-          <h2 v-else>{{result.title}} <p>Nessuna immagine disponibile</p> </h2>
+          <p class="fw-bold px-2" v-else>immagine non disponibile</p>
         </div>
 
         <!-- Poster serie tv -->
-        <div v-else>
+        <div v-else >
           <img v-if="result.poster_path !== null"
             class="poster" 
             :src="`https://image.tmdb.org/t/p/w342${result.poster_path}`" 
             :alt="`Poster ${result.name}`"
           >
-          <h2 v-else>{{result.name}} <p>Nessuna immagine disponibile</p> </h2>
+          <p class="fw-bold px-2" v-else>immagine non disponibile </p>
         </div>
-        <ul>
+    </div>
+    <div class="flip-card-back">
+      <ul>
             <li>
                 <h4 class="fw-bold">Titolo: </h4>
                 <p v-if="result.title">
@@ -52,6 +56,16 @@
             </li>
         </ul>
     </div>
+  </div>
+
+
+
+
+
+    
+    
+        
+    </div>
 </template>
 
 <script>
@@ -81,5 +95,62 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+
+ul > li{
+  list-style-type: none;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height:400px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px
+}
+.flip-card-inner img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center top;
+
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+
+.flip-card-back {
+  background-color: dodgerblue;
+  color: white;
+  transform: rotateY(180deg);
+} 
+
+
 </style>
