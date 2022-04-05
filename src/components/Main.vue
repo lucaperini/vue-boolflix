@@ -1,11 +1,11 @@
 <template>
     <main>
-        <div class="container-fluid">
+        <div class="container-fluid text-center flex-wrap">
             <div class="text-center text-danger p-5"
                 v-if="searchMoviesList.length <= 0 && searchSeriesList.length <= 0">
                 <h5>Cerca un titolo...</h5>
             </div>
-            <div v-else class="d-flex row row-cols-5">
+            <div v-else class="row row-cols-4">
                 <h2 v-if="searchMoviesList.length > 0"></h2>
                 <section class="movie col-12">
                     <Card 
@@ -44,6 +44,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+main{
+    background-color: rgb(33, 44, 58);
+}
 
 
 </style>

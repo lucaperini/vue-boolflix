@@ -2,70 +2,70 @@
  <div class="flip-card">
   <div class="flip-card-inner">
     <div class="flip-card-front">
-      
       <div v-if="result.title">
-          <img v-if="result.poster_path !== null" 
-            
+        <img v-if="result.poster_path !== null" 
             :src="`https://image.tmdb.org/t/p/w342${result.poster_path}`" 
             :alt="`Poster ${result.title}`"
-          >
-          <p class="fw-bold px-2" v-else>immagine non disponibile</p>
+        >
+        <div v-else>
+          <p class="fw-bold px-2 text-warning text-center border-warning" >{{result.title}}</p>
+          <p class="text-center">immagine non disponibile</p>
         </div>
-
-        <!-- Poster serie tv -->
-        <div v-else >
+      </div>
+      <div v-else >
           <img v-if="result.poster_path !== null"
             class="poster" 
             :src="`https://image.tmdb.org/t/p/w342${result.poster_path}`" 
             :alt="`Poster ${result.name}`"
           >
-          <p class="fw-bold px-2" v-else>immagine non disponibile </p>
+          <div v-else>
+          <p class="fw-bold px-2 text-warning text-center border-warning" >{{result.name}}</p>
+          <p class="text-center">immagine non disponibile</p>
         </div>
-    </div>
-    <div class="flip-card-back">
+      </div>
+  </div>
+    <div class="flip-card-back overflow-auto">
       <ul>
-            <li>
-                <h4 class="fw-bold">Titolo: </h4>
-                <p v-if="result.title">
+          <li>
+            <p class="fw-bold d-inline-block">Titolo:</p>
+            <p v-if="result.title">
                 {{result.title}}
-                </p>
-                <p v-else>{{result.name}}</p>
-            </li>
-            <li>
-                <h4 class="fw-bold">Titolo originale: </h4>
-                <p v-if="result.original_title">
-                {{result.original_title}}</p>
-                <p v-else>{{result.original_name}}</p>
-            </li>
-            <li>
-                <h4 class="fw-bold">Lingua originale: </h4>
-                <lang-flag v-if="result.original_language !== null" :iso="result.original_language" title="country flag" />
-                <p v-else>{{result.original_language}} non disponibile</p>
-                  
-            </li>
-            <li>
+            </p>
+            <p v-else>{{result.name}}</p>
+          </li>
+          <li>
+            <p class="fw-bold">Titolo originale:</p>
+            <p v-if="result.original_title">
+              {{result.original_title}}</p>
+            <p v-else>{{result.original_name}}</p>
+          </li>
+          <li>
+              <p class="fw-bold">Lingua originale:</p>
+              <lang-flag class="mx-2" v-if="result.original_language" :iso="result.original_language" title="country flag" />
+              <p v-else>{{result.original_language}}</p>
+          </li>
+            <!-- <li>
                 <h4 class="fw-bold">Voto: </h4>
                 <p>{{Math.ceil(result.vote_average)}}</p>
-            </li>
+            </li> -->
             <li>
-            <h4 class="fw-bold">Valutazione: </h4>
+            <p class="fw-bold">Valutazione:</p>
                 <i v-for="index in starsNumber(result)" :key="index" 
                 class="fas fa-star text-warning"></i>
                 <i v-for="index in (maxStars - starsNumber(result))" :key="index" 
                 class="far fa-star text-warning"></i>
             </li>
+            <li>
+              <p class="fw-bold">Descrizione:</p>
+              <p v-if=" result.overview !== '' ">
+                {{result.overview}}
+              </p>
+              <p v-else>non disponibile</p>
+            </li>
         </ul>
     </div>
   </div>
-
-
-
-
-
-    
-    
-        
-    </div>
+</div>
 </template>
 
 <script>
@@ -97,60 +97,84 @@ export default {
 
 <style lang="scss" scoped>
 
+ul {
+  justify-content:center;
+  padding: 1rem;
+  
+}
+
 ul > li{
   list-style-type: none;
+  margin-top:0;
+  line-height:1rem;
+}
+
+ul > li p{
+  display:inline-block;
+  padding:0 .2rem;
+  line-height:1rem;
+  color:white;
 }
 
 .flip-card {
   background-color: transparent;
   width: 300px;
   height:400px;
-  border: 1px solid #f1f1f1;
-  perspective: 1000px
+  perspective: 1000px;
+  margin-bottom: 2rem;
+  
 }
-.flip-card-inner img{
+
+.flip-card-front img{
   width:100%;
   height:100%;
   object-fit:contain;
   object-position:center top;
-
+  border-radius:1.5rem;
 }
 
 .flip-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  text-align: center;
+  text-align: left;
   transition: transform 0.8s;
   transform-style: preserve-3d;
+  display: inline-block;
 }
-
 
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
+  cursor: pointer;
 }
-
 
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  padding:1.2rem;
+  
 }
-
 
 .flip-card-front {
-  background-color: #bbb;
-  color: black;
+  background-color: transparent;
+  color: white;
 }
 
-
 .flip-card-back {
-  background-color: dodgerblue;
+  background-color: rgb(26, 53, 73);
   color: white;
+  margin-top:1rem;
   transform: rotateY(180deg);
+  line-height:.8rem;
+  font-size:.8rem;
+  border-radius:1.5rem;
+  border: 3px solid goldenrod;
+  align-items:center;
+  z-index:10;
+  
 } 
-
 
 </style>
