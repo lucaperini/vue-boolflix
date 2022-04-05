@@ -1,13 +1,14 @@
 <template>
     <main>
-        <div class="container-fluid text-center flex-wrap">
+        <div class="container">
             <div class="text-center text-danger p-5"
-                v-if="searchMoviesList.length <= 0 && searchSeriesList.length <= 0">
+              v-if="searchMoviesList.length <= 0 && searchSeriesList.length <= 0">
                 <h5>Cerca un titolo...</h5>
             </div>
+            
             <div v-else class="row row-cols-4">
-                <h2 v-if="searchMoviesList.length > 0"></h2>
-                <section class="movie col-12">
+                <h2 class="text-white text-uppercase fw-bold p-4" v-if="searchMoviesList.length > 0">film</h2>
+                <section class="col-12">
                     <Card 
                         v-for="item in searchMoviesList" 
                         :key="item.id" 
@@ -15,7 +16,7 @@
                         class="d-inline-block"
                     />
                 </section>
-                <h2 v-if="searchSeriesList.length > 0"></h2>
+                <h2 class="text-white text-uppercase fw-bold p-5" v-if="searchSeriesList.length > 0">serie tv</h2>
                 <section class="tv col-12">
                     <Card 
                         v-for="item in searchSeriesList" 
@@ -25,6 +26,7 @@
                     />
                 </section>
             </div>
+            
         </div>
     </main>
 </template>
@@ -46,6 +48,7 @@ export default {
 <style lang="scss" scoped>
 main{
     background-color: rgb(33, 44, 58);
+    
 }
 
 

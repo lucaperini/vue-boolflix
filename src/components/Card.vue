@@ -98,7 +98,7 @@ export default {
 <style lang="scss" scoped>
 
 ul {
-  justify-content:center;
+  
   padding: 1rem;
   
 }
@@ -128,8 +128,8 @@ ul > li p{
 .flip-card-front img{
   width:100%;
   height:100%;
-  object-fit:contain;
-  object-position:center top;
+  object-fit:cover;
+  
   border-radius:1.5rem;
 }
 

@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar">
         <div class="container-fluid">
-            <a href="" class="navbar-brand text-danger fs-2">Boolflix</a>
+            <a href="" class="navbar-brand text-danger fw-bold fs-2">Boolflix</a>
             <div class="d-flex">
                 <input v-model="searchInput"
                 class="form-control me-2" 
