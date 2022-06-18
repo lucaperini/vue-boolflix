@@ -11,7 +11,7 @@
                 >
                 <button 
                 @click="startNewSearch" 
-                class="btn btn-outline-light" 
+                class="btn btn-outline-light search" 
                 type="submit">
                 Cerca
                 </button>
@@ -51,6 +51,10 @@ export default {
 <style lang="scss" scoped>
 .navbar{
     background-color: rgb(27, 27, 27);
+}
+
+.search{
+    margin-right:10px;
 }
 
 </style>

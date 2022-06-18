@@ -1,9 +1,11 @@
 <template>
     <main>
         <div class="container">
-            <div class="text-center text-danger p-5"
+           
+            <div class="text-center text-white text-danger p-5"
               v-if="searchMoviesList.length <= 0 && searchSeriesList.length <= 0">
-                <h5>Cerca un titolo...</h5>
+                <h1><strong>Benvenuto in Boolflix!</strong></h1>
+                <p>Cerca il tuo film o la tua serie tv preferita</p>
             </div>
             
             <div v-else class="row row-cols-4">
@@ -46,10 +48,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-main{
-    background-color: rgb(33, 44, 58);
-    
+main {
+   background-image: url(../assets/tv2.jpg);
+   background-size: cover;
+   width:100%;
+   height: 100vh;
 }
+
+
 
 
 </style>
