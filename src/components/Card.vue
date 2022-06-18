@@ -1,4 +1,5 @@
 <template>
+ 
   <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-card-front">
@@ -63,10 +64,6 @@
             />
             <p v-else>{{ result.original_language }}</p>
           </li>
-          <!-- <li>
-                <h4 class="fw-bold">Voto: </h4>
-                <p>{{Math.ceil(result.vote_average)}}</p>
-            </li> -->
           <li>
             <p class="fw-bold">Valutazione:</p>
             <i
@@ -91,6 +88,8 @@
       </div>
     </div>
   </div>
+
+
 </template>
 
 <script>
